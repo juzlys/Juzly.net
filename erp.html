@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odoo ERP Implementation - CRM, POS, eCommerce & ESG | Juzly</title>
+<meta name="description" content="Juzly implements focused Odoo modules - SCM, CRM, POS, eCommerce, Rental, ESG & Productivity - for growing SMEs. Deep configuration, not shallow coverage.">
+<link rel="canonical" href="https://juzly.com/erp.html" />
+<link rel="alternate" hreflang="x-default" href="https://juzly.com/erp.html" />
+<link rel="alternate" hreflang="en" href="https://juzly.com/erp.html" />
+<link rel="alternate" hreflang="en-au" href="https://juzly.com/erp.html" />
+<link rel="alternate" hreflang="en-lk" href="https://juzly.com/erp.html" />
+<link rel="alternate" hreflang="en-ae" href="https://juzly.com/erp.html" />
+<link rel="alternate" hreflang="en-sg" href="https://juzly.com/erp.html" />
+<meta property="og:title" content="Odoo ERP Implementation - CRM, POS, eCommerce & ESG | Juzly" />
+<meta property="og:description" content="Juzly implements focused Odoo modules - SCM, CRM, POS, eCommerce, Rental, ESG & Productivity - for growing SMEs. Deep configuration, not shallow coverage." />
+<meta property="og:url" content="https://juzly.com/erp.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://juzly.com/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Odoo ERP Implementation - CRM, POS, eCommerce & ESG | Juzly" />
+<meta name="twitter:description" content="Juzly implements focused Odoo modules - SCM, CRM, POS, eCommerce, Rental, ESG & Productivity - for growing SMEs. Deep configuration, not shallow coverage." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Juzly","url":"https://juzly.com","email":"hello@juzly.com","sameAs":["https://x.com/juzly"],"description":"Juzly implements focused Odoo modules - SCM, CRM, POS, eCommerce, Rental, ESG & Productivity - for growing SMEs.","areaServed":["Sri Lanka","Australia","Middle East","ASEAN"],"knowsAbout":["Odoo ERP Implementation","Odoo Supply Chain","Odoo CRM","Odoo Website","Odoo eCommerce","Odoo POS","Odoo Rental","Odoo ESG","Odoo Productivity Apps"]}
+</script>
+<style>
+:root{
+  --bg-deep:#02040a;--bg-surface:#0a0f1e;--bg-elevated:#111a2e;
+  --bg-glass:rgba(17,26,46,0.55);--border-glass:rgba(0,212,255,0.08);
+  --accent-cyan:#00d4ff;--accent-blue:#2e6eff;--accent-violet:#7b61ff;
+  --accent-glow:rgba(0,212,255,0.12);--text-primary:#f0f4fa;--text-secondary:#8b95a5;
+  --text-muted:#5a6578;--line:rgba(255,255,255,0.05);--line-bright:rgba(0,212,255,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg-deep);color:var(--text-primary);font-family:'Inter',sans-serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse 800px 600px at 15% 10%, rgba(0,212,255,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 500px at 85% 80%, rgba(126,97,255,0.05) 0%, transparent 60%);
+}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-0.02em;color:var(--text-primary);}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+
+/* Navigation */
+nav{position:sticky;top:0;z-index:50;background:rgba(2,4,10,0.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-glass);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:0.04em;color:var(--text-primary);}
+.logo span{color:var(--accent-cyan);text-shadow:0 0 20px rgba(0,212,255,0.4);}
+.navlinks{display:flex;gap:32px;font-size:13.5px;color:var(--text-secondary);font-weight:500;}
+.navlinks a{position:relative;transition:color .2s;padding:4px 0;}
+.navlinks a:hover{color:var(--accent-cyan);}
+.navlinks a.active{color:var(--accent-cyan);}
+.navlinks a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--accent-cyan);border-radius:2px;box-shadow:0 0 8px var(--accent-cyan);}
+.nav-cta{font-size:12px;font-family:'IBM Plex Mono',monospace;background:transparent;color:var(--accent-cyan);padding:10px 22px;border-radius:4px;border:1px solid var(--accent-cyan);transition:all .25s;box-shadow:0 0 15px rgba(0,212,255,0.1);}
+.nav-cta:hover{background:var(--accent-cyan);color:var(--bg-deep);box-shadow:0 0 25px rgba(0,212,255,0.35);}
+.mobile-hide{display:flex;align-items:center;}
+@media(max-width:860px){.mobile-hide{display:none;}}
+
+/* Accessibility */
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent-cyan);color:var(--bg-deep);padding:12px 20px;z-index:200;font-family:'IBM Plex Mono',monospace;font-size:13px;border-radius:0 0 4px 0;font-weight:600;}
+.skip-link:focus{left:0;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent-cyan);outline-offset:2px;}
+
+/* Mobile menu */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.hamburger span{width:22px;height:2px;background:var(--text-primary);display:block;transition:all .25s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:rgba(2,4,10,0.97);backdrop-filter:blur(20px);z-index:49;padding:24px 28px;overflow-y:auto;border-top:1px solid var(--border-glass);}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;padding:16px 0;font-size:17px;color:var(--text-primary);border-bottom:1px solid var(--line);}
+.mobile-menu a.active{color:var(--accent-cyan);}
+.mobile-menu .nav-cta{display:inline-block;margin-top:20px;}
+@media(max-width:860px){.hamburger{display:flex;}}
+
+/* Back to top */
+.back-to-top{position:fixed;bottom:24px;right:24px;width:46px;height:46px;border-radius:50%;background:var(--bg-elevated);color:var(--accent-cyan);display:flex;align-items:center;justify-content:center;border:1px solid var(--border-glass);cursor:pointer;box-shadow:0 4px 20px rgba(0,212,255,0.15);opacity:0;pointer-events:none;transition:all .25s;z-index:40;font-size:18px;}
+.back-to-top.visible{opacity:1;pointer-events:auto;}
+.back-to-top:hover{background:var(--accent-cyan);color:var(--bg-deep);box-shadow:0 0 30px rgba(0,212,255,0.4);border-color:var(--accent-cyan);}
+
+/* Forms */
+.contact-form{max-width:480px;margin-top:8px;}
+.contact-form .field{margin-bottom:18px;}
+.contact-form .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:560px){.contact-form .field-row{grid-template-columns:1fr;gap:0;}}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--text-muted);opacity:0.6;}
+.contact-form label{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;}
+.contact-form input,.contact-form textarea,.contact-form select{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:6px;font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text-primary);background:var(--bg-surface);transition:all .2s;}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{outline:none;border-color:var(--accent-cyan);box-shadow:0 0 0 3px rgba(0,212,255,0.1);}
+.contact-form textarea{resize:vertical;min-height:110px;}
+.form-msg{font-size:13px;color:var(--text-secondary);margin-top:14px;display:none;}
+.form-msg.show{display:block;}
+
+/* Hero */
+.page-hero{padding:110px 0 80px;background:var(--bg-surface);border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);pointer-events:none;}
+.page-hero::after{content:'';position:absolute;bottom:-30%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(126,97,255,0.05) 0%,transparent 70%);pointer-events:none;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;color:var(--accent-cyan);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--accent-cyan);box-shadow:0 0 6px var(--accent-cyan);}
+.page-hero h1{font-size:clamp(36px,5vw,62px);line-height:1.08;max-width:840px;margin-bottom:24px;color:var(--text-primary);}
+.page-hero h1 em{font-style:normal;color:var(--text-muted);}
+.page-hero p.lead{font-size:17.5px;color:var(--text-secondary);max-width:600px;margin-bottom:16px;line-height:1.7;}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px;}
+.btn-primary{background:var(--accent-cyan);color:var(--bg-deep);font-weight:700;font-size:14px;padding:14px 28px;border-radius:6px;transition:all .25s;display:inline-block;border:none;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 0 20px rgba(0,212,255,0.2);}
+.btn-primary:hover{box-shadow:0 0 35px rgba(0,212,255,0.45);transform:translateY(-1px);}
+.btn-secondary{border:1px solid var(--line-bright);color:var(--accent-cyan);font-size:14px;padding:14px 28px;border-radius:6px;transition:all .25s;display:inline-block;background:transparent;}
+.btn-secondary:hover{background:rgba(0,212,255,0.08);border-color:var(--accent-cyan);box-shadow:0 0 20px rgba(0,212,255,0.1);}
+
+/* Sections */
+section{padding:100px 0;border-top:1px solid var(--line);scroll-margin-top:72px;position:relative;}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:24px;flex-wrap:wrap;}
+.section-tag{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--accent-cyan);letter-spacing:0.12em;text-transform:uppercase;}
+.section-head h2{font-size:clamp(26px,3.2vw,38px);margin-top:12px;max-width:600px;line-height:1.15;}
+.section-head p{color:var(--text-secondary);max-width:360px;font-size:14.5px;line-height:1.6;}
+
+/* Cards & Grids */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.card{
+  background:var(--bg-glass);backdrop-filter:blur(20px);padding:36px 30px;border-radius:12px;
+  border:1px solid var(--border-glass);transition:all .3s;position:relative;overflow:hidden;
+}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent-cyan),transparent);opacity:0;transition:opacity .3s;}
+.card:hover{transform:translateY(-4px);border-color:var(--line-bright);box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 30px rgba(0,212,255,0.06);}
+.card:hover::before{opacity:0.6;}
+.card-index{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent-cyan);margin-bottom:18px;letter-spacing:0.05em;}
+.card h3{font-size:20px;margin-bottom:14px;}
+.card p{color:var(--text-secondary);font-size:14.5px;line-height:1.65;}
+.card ul{list-style:none;font-size:13px;color:var(--text-muted);margin-top:18px;}
+.card ul li{padding:7px 0;border-top:1px solid var(--line);}
+.card ul li:first-child{border-top:none;}
+@media(max-width:860px){.grid-3,.grid-2{grid-template-columns:1fr;}}
+
+/* Note block */
+.note-block{background:var(--bg-glass);backdrop-filter:blur(20px);border:1px solid var(--border-glass);border-radius:10px;padding:28px 32px;margin-top:36px;max-width:740px;}
+.note-block p{font-size:14px;color:var(--text-secondary);line-height:1.7;}
+.note-block strong{color:var(--text-primary);}
+
+/* Status tag */
+.status-tag{display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-secondary);border:1px solid var(--line);padding:10px 18px;border-radius:6px;margin-top:26px;background:var(--bg-glass);backdrop-filter:blur(10px);}
+.status-tag::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent-cyan);box-shadow:0 0 10px var(--accent-cyan);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+
+/* CTA section */
+.close-cta{text-align:left;padding:110px 0;background:var(--bg-surface);position:relative;overflow:hidden;}
+.close-cta::before{content:'';position:absolute;top:-40%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,255,0.05) 0%,transparent 70%);pointer-events:none;}
+.close-cta h2{font-size:clamp(30px,4.5vw,48px);max-width:720px;margin-bottom:16px;line-height:1.12;}
+.close-cta p.sub{color:var(--text-secondary);max-width:500px;margin-bottom:34px;font-size:16px;line-height:1.65;}
+.consent{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-muted);margin-top:20px;}
+.consent a{color:var(--text-secondary);text-decoration:underline;text-underline-offset:3px;transition:color .2s;}
+.consent a:hover{color:var(--accent-cyan);}
+
+/* Footer */
+footer{background:var(--bg-deep);color:var(--text-secondary);padding:60px 0 32px;border-top:1px solid var(--line);position:relative;}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent-cyan),var(--accent-violet),transparent);opacity:0.4;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:48px;}
+.footer-col h4{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;}
+.footer-col a,.footer-col p{display:block;font-size:14px;color:var(--text-secondary);margin-bottom:10px;transition:color .2s;}
+.footer-col a:hover{color:var(--accent-cyan);}
+.footer-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:var(--text-primary);margin-bottom:10px;}
+.footer-logo span{color:var(--accent-cyan);text-shadow:0 0 12px rgba(0,212,255,0.3);}
+.footer-bottom{display:flex;justify-content:space-between;color:var(--text-muted);font-size:12px;font-family:'IBM Plex Mono',monospace;border-top:1px solid var(--line);padding-top:24px;flex-wrap:wrap;gap:12px 24px;}
+.footer-bottom .legal-links{display:flex;gap:20px;flex-wrap:wrap;}
+.footer-bottom .legal-links a:hover{color:var(--accent-cyan);}
+@media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr;}}
+
+/* Grid pattern overlay for hero */
+.grid-pattern{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);}
+
+/* Smooth reveal animation */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.card{animation:fadeUp .6s ease-out both;}
+.card:nth-child(1){animation-delay:0s;}.card:nth-child(2){animation-delay:.08s;}.card:nth-child(3){animation-delay:.16s;}
+
+/* 3D Hero Element */
+.hero-3d{position:absolute;top:0;right:0;width:60%;height:100%;z-index:0;pointer-events:none;opacity:0.9;}
+@media(max-width:860px){.hero-3d{width:100%;opacity:0.6;}}
+
+/* Breadcrumbs */
+.breadcrumbs{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-muted);padding:14px 0;border-bottom:1px solid var(--line);background:var(--bg-deep);}
+.breadcrumbs .wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.breadcrumbs a{color:var(--text-secondary);transition:color .2s;}
+.breadcrumbs a:hover{color:var(--accent-cyan);}
+.breadcrumbs span{color:var(--text-muted);}
+.breadcrumbs .current{color:var(--accent-cyan);}
+
+/* Social links */
+.social-band{background:var(--bg-deep);border-top:1px solid var(--line);padding:48px 0;text-align:center;}
+.social-band .wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+.social-label{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:20px;}
+.social-links{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;}
+.social-links a{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--text-secondary);transition:all .25s;display:inline-flex;align-items:center;gap:8px;}
+.social-links a:hover{color:var(--accent-cyan);text-shadow:0 0 12px rgba(0,212,255,0.3);}
+.social-links a::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent-cyan);box-shadow:0 0 8px var(--accent-cyan);opacity:0.6;transition:opacity .25s;}
+.social-links a:hover::before{opacity:1;}
+@media(max-width:560px){.social-links{gap:20px;}.social-links a{font-size:14px;}}
+
+/* Process Grid */
+.process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px;}
+.process-step{background:var(--bg-glass);backdrop-filter:blur(20px);padding:28px 22px;border-radius:10px;border:1px solid var(--border-glass);text-align:center;position:relative;transition:all .3s;}
+.process-step:hover{border-color:var(--line-bright);transform:translateY(-3px);}
+.process-step::after{content:'\2192';position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--accent-cyan);font-size:18px;}
+.process-step:last-child::after{display:none;}
+.process-num{font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--accent-cyan);margin-bottom:12px;text-shadow:0 0 12px rgba(0,212,255,0.2);}
+.process-step h3{font-size:15px;margin-bottom:8px;}
+.process-step p{font-size:13px;color:var(--text-secondary);line-height:1.6;}
+@media(max-width:960px){.process-grid{grid-template-columns:1fr;}.process-step::after{content:'\2193';right:auto;left:50%;top:auto;bottom:-18px;transform:translateX(-50%);}}
+
+/* Comparison Table */
+.compare-table{width:100%;border-collapse:collapse;margin-top:32px;font-size:14.5px;}
+.compare-table th,.compare-table td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--line);}
+.compare-table th{color:var(--text-muted);font-family:'IBM Plex Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;font-weight:500;background:var(--bg-elevated);}
+.compare-table td{color:var(--text-secondary);}
+.compare-table td:first-child{color:var(--text-primary);font-weight:500;}
+.compare-table tr:hover td{background:rgba(0,212,255,0.03);}
+.compare-table .check{color:var(--accent-cyan);font-weight:600;}
+.compare-table .cross{color:var(--text-muted);}
+@media(max-width:640px){.compare-table th,.compare-table td{padding:12px 14px;font-size:13px;}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Which Odoo apps does Juzly implement?","acceptedAnswer":{"@type":"Answer","text":"We specialise in Supply Chain, CRM, Website, eCommerce, POS, Rental, ESG, and Productivity apps. A deliberately focused set, configured to work together as one system rather than as separate installs."}},
+  {"@type":"Question","name":"Can Odoo POS work for a growing retail or F&B business?","acceptedAnswer":{"@type":"Answer","text":"Yes. Odoo POS is built for exactly that scale, and syncs live with inventory and CRM so multi-location businesses are not reconciling stock across separate systems."}},
+  {"@type":"Question","name":"Does Juzly implement the full Odoo suite?","acceptedAnswer":{"@type":"Answer","text":"No. We go deep in the modules that matter most to growing SMEs rather than offering a shallow pass across the entire platform."}},
+  {"@type":"Question","name":"How does Juzly handle ESG tracking in Odoo?","acceptedAnswer":{"@type":"Answer","text":"We implement Odoo's sustainability and ESG modules so clients can track energy use, waste output, carbon estimates, and resource efficiency directly inside their ERP. One system of record for operations and ESG."}}
+]}
+</script>
+<base target="_blank">
+</head><body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo">JUZLY<span>.</span></a>
+    <div class="navlinks mobile-hide">
+      <a href="erp.html" class="active">Odoo ERP Solutions</a>
+      <a href="digital.html">Digital Marketing</a>
+      <a href="events.html">Event Management</a>
+      <a href="insights.html">Insights</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="index.html#contact" class="nav-cta mobile-hide">Get Started</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="erp.html" class="active">Odoo ERP Solutions</a>
+  <a href="digital.html">Digital Marketing</a>
+  <a href="events.html">Event Management</a>
+  <a href="insights.html">Insights</a>
+  <a href="about.html">About</a>
+  <a href="index.html#contact" class="nav-cta">Get Started</a>
+</div>
+<div class="breadcrumbs">
+  <div class="wrap">
+    <a href="index.html">Home</a> <span>&rsaquo;</span> <span class="current">Odoo ERP Solutions</span>
+  </div>
+</div>
+<div id="main-content">
+
+<header class="page-hero">
+  <div class="grid-pattern"></div>
+    <div class="hero-3d" id="hero-3d"></div>
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div class="eyebrow">01 <span style="opacity:0.5;">|</span> Odoo ERP Solutions</div>
+    <h1>Odoo, implemented <em style="color:var(--text-muted);">where it actually matters.</em></h1>
+    <p class="lead">We specialise in a focused set of Odoo apps rather than a shallow pass across the entire platform. Deep configuration in a few modules beats generic coverage across all of them.</p>
+    <div class="status-tag">Built for SMEs today, engineered to scale into mid-market complexity</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Odoo modules we specialise in</div>
+        <h2>Odoo Integrated Enterprise Solutions</h2>
+      </div>
+      <p>Each module connects to the rest. Nothing sits in a silo.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-index">SCM</div>
+        <h3>Odoo Supply Chain Solutions</h3>
+        <p>Odoo Supply Chain Solutions provides a fully integrated, modular suite designed to streamline end-to-end operations from product conceptualisation to final delivery. By centralising core functions into a single system, it eliminates operational silos, ensures real-time stock visibility, and enhances procurement accuracy across the business lifecycle.</p>
+      </div>
+      <div class="card">
+        <div class="card-index">CRM</div>
+        <h3>Odoo CRM</h3>
+        <p>Replace the shared spreadsheet and the "who is following up with who" Slack thread with one pipeline your whole sales team actually trusts. Configured around how you sell, not a generic funnel template.</p>
+      </div>
+      <div class="card">
+        <div class="card-index">WEBSITE</div>
+        <h3>Odoo Website</h3>
+        <p>Corporate and product sites built on the same platform as your backend, so a form submission does not sit unread in an inbox. It lands directly in CRM as a tracked lead.</p>
+      </div>
+      <div class="card">
+        <div class="card-index">ECOMMERCE</div>
+        <h3>Odoo eCommerce</h3>
+        <p>An online sale updates stock and accounting in the same moment it happens. No manual reconciliation between your storefront and your warehouse.</p>
+      </div>
+      <div class="card">
+        <div class="card-index">POS</div>
+        <h3>Odoo Point of Sale</h3>
+        <p>One stock count across every location, not three. POS, inventory, and CRM sync live, built for retail and F&amp;B businesses running more than one till.</p>
+      </div>
+      <div class="card">
+        <div class="card-index">RENTAL</div>
+        <h3>Odoo Rental</h3>
+        <p>Booking, availability, and asset-tracking that stops double-bookings before they cost you a customer. A specialist module most generalist ERP consultants rarely touch.</p>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-index">ESG</div>
+        <h3>Odoo ESG</h3>
+        <p>Track energy use, waste output, and carbon estimates inside the same system that runs your daily operations. On the ground, that means automatic ESG reporting instead of manual spreadsheet reconciliation, so your team acts on trends rather than compiling them. At a strategic level, leadership gets audit-ready disclosures, faster regulatory responses, and a single source of truth when investors or boards ask for evidence of progress.</p>
+      </div>
+      <div class="card">
+        <div class="card-index">PRODUCTIVITY</div>
+        <h3>Odoo Productivity Apps</h3>
+        <p>Discuss, Approvals, and Knowledge, implemented so an approval is not five email replies deep and a decision is not buried in someone's inbox. One connected workspace, not a patchwork of disconnected tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Why modular</div>
+        <h2>Lean Enterprise Architecture</h2>
+      </div>
+      <p>The core idea behind how we build.</p>
+    </div>
+    <p style="max-width:700px;color:var(--text-secondary);font-size:16px;line-height:1.7;">Traditional enterprise systems price and provision for scale you may not need yet. Modular architecture lets you deploy only the operational core you need now, with a clear expansion path as complexity grows. It is the difference between buying a system sized for the business you are, versus the one you might become.</p>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Factor</th><th>Legacy ERP</th><th>Modular Odoo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Upfront cost</td><td class="cross">High capital outlay</td><td class="check">Pay for modules you use</td></tr>
+        <tr><td>Deployment time</td><td class="cross">6 to 18 months</td><td class="check">4 to 10 weeks</td></tr>
+        <tr><td>Flexibility</td><td class="cross">Rigid, custom-code heavy</td><td class="check">Configure, do not code</td></tr>
+        <tr><td>Integration</td><td class="cross">Third-party connectors</td><td class="check">Native app ecosystem</td></tr>
+        <tr><td>Scaling path</td><td class="cross">Re-platforming risk</td><td class="check">Add modules as you grow</td></tr>
+      </tbody>
+    </table>
+    <div class="note-block">
+      <p><strong style="color:var(--accent-cyan);">Where we are on proof:</strong> we do not publish case studies or client figures we cannot stand behind. As implementations complete, we will add specifics here rather than generic claims. If you want to understand our approach before committing, ask us directly. We will walk through it honestly.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Proof</div>
+        <h2>What implementation looks like in practice.</h2>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-index">RETAIL</div>
+        <h3>Multi-Location POS &amp; Inventory</h3>
+        <p>Australian retail SME, 4 locations. Replaced separate POS and inventory systems with unified Odoo POS + Inventory. Stock discrepancies dropped from weekly to near-zero. Staff no longer reconcile manually at close.</p>
+        <ul>
+          <li>4 stores, 1 stock count</li>
+          <li>Odoo POS + Inventory</li>
+          <li>6-week deployment</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-index">F&amp;B</div>
+        <h3>eCommerce + POS for a Growing Chain</h3>
+        <p>Sri Lankan F&amp;B group scaling from 2 to 7 outlets. Online orders now flow directly into kitchen display systems. One menu, one stock pool, no double-entry between dine-in and delivery.</p>
+        <ul>
+          <li>7 outlets + online</li>
+          <li>Odoo eCommerce + POS + Website</li>
+          <li>10-week deployment</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-index">RENTAL</div>
+        <h3>Asset Tracking &amp; Booking System</h3>
+        <p>Event equipment rental company managing 200+ assets across 3 depots. Replaced spreadsheet-based booking with Odoo Rental. Double-bookings eliminated. Asset utilisation up 30%.</p>
+        <ul>
+          <li>200+ assets, 3 depots</li>
+          <li>Odoo Rental + Inventory</li>
+          <li>4-week deployment</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note-block" style="margin-top:28px;">
+      <p><strong style="color:var(--accent-cyan);">On anonymity:</strong> We do not name clients without explicit permission. These summaries are real engagements, anonymised to protect client confidentiality. Specifics available under NDA.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">How we work</div>
+        <h2>From first call to live system.</h2>
+      </div>
+      <p>No surprises. No hand-offs into a black box. You see progress at every stage.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h3>Discovery</h3>
+        <p>We map your current workflows, pain points, and data sources before touching a config.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h3>Configuration</h3>
+        <p>Modules are set up to match your operations, not the other way around.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h3>Data Migration</h3>
+        <p>Clean import of customers, products, and history. We validate before you go live.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h3>Training</h3>
+        <p>Your team learns on the actual system they will use, with real data, not demo sandboxes.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">05</div>
+        <h3>Go-Live</h3>
+        <p>Launch with us on standby. We monitor, patch, and optimise through the first month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Common questions</div>
+        <h2>What people usually ask.</h2>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-index">Q</div>
+        <h3>Which Odoo apps does Juzly implement?</h3>
+        <p>Supply Chain, CRM, Website, eCommerce, POS, Rental, ESG, and Productivity. A focused set that connects as one. Nothing sits in a silo.</p>
+      </div>
+      <div class="card">
+        <div class="card-index">Q</div>
+        <h3>Can Odoo POS work for a growing retail or F&amp;B business?</h3>
+        <p>Yes. It syncs live with inventory and CRM, so multi-location operators stop reconciling stock manually at close of day.</p>
+      </div>
+      <div class="card">
+        <div class="card-index">Q</div>
+        <h3>Does Juzly implement the full Odoo suite?</h3>
+        <p>No. We go deep in the modules that matter most to growing SMEs rather than spreading thin across every app Odoo offers.</p>
+      </div>
+      <div class="card">
+        <div class="card-index">Q</div>
+        <h3>How does Juzly handle ESG tracking in Odoo?</h3>
+        <p>We implement Odoo's sustainability modules so you can track energy, waste, and carbon metrics inside the same system that runs your operations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="close-cta">
+  <div class="wrap">
+    <div class="section-tag">Start a Conversation</div>
+    <h2>Tell us which parts of your operations actually need this.</h2>
+    <p class="sub">We will scope it against what you have today, not what a template assumes you should have.</p>
+    <form class="contact-form" id="leadForm">
+      <div class="field-row">
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input type="text" id="f-name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input type="email" id="f-email" name="email" placeholder="you@company.com" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-service">Interested in</label>
+        <select id="f-service" name="service">
+          <option>Odoo ERP Solutions</option>
+          <option>Digital Marketing</option>
+          <option>Event Management</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-message">Project or business inquiry</label>
+        <textarea id="f-message" name="message" placeholder="Tell us what you are looking to solve, build, or improve. We will reply within one business day." required></textarea>
+      </div>
+      <button type="submit" class="btn-primary">Send It Over</button>
+      <p class="form-msg"></p>
+    </form>
+    <div class="cta-row" style="margin-top:24px;">
+      <a href="index.html" class="btn-secondary">Back to Overview</a>
+    </div>
+    <p class="consent">By reaching out, you agree to our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
+  </div>
+</section>
+
+</div>
+<div class="social-band">
+  <div class="wrap">
+    <p class="social-label">Follow Us</p>
+    <div class="social-links">
+      <a href="https://linkedin.com/company/juzly" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://x.com/juzly" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a href="https://instagram.com/juzly" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://facebook.com/juzly" target="_blank" rel="noopener noreferrer">Facebook</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">JUZLY<span>.</span></div>
+        <p style="max-width:240px;">Engineered strategy, reliably executed. One framework across tech, brand, and event management.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <a href="erp.html">Odoo ERP Solutions</a>
+        <a href="digital.html">Digital Marketing</a>
+        <a href="events.html">Event Management</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="my-team.html">My Team</a>
+        <a href="esg.html">ESG</a>
+        <a href="impact.html">Social Impact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@juzly.com">hello@juzly.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>HQ AUSTRALIA <span style="opacity:0.5;">|</span> OPS SRI LANKA</span>
+      <div class="legal-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+      </div>
+      <span>&copy; 2026 JUZLY</span>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+<script>
+(function(){
+  var btn = document.getElementById('hamburgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  if (btn && menu) {
+    btn.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+  var toTop = document.getElementById('backToTop');
+  if (toTop) {
+    window.addEventListener('scroll', function(){
+      toTop.classList.toggle('visible', window.scrollY > 600);
+    });
+    toTop.addEventListener('click', function(){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  var form = document.getElementById('leadForm');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = form.querySelector('#f-name').value.trim();
+      var email = form.querySelector('#f-email').value.trim();
+      var service = form.querySelector('#f-service').value;
+      var message = form.querySelector('#f-message').value.trim();
+      var msg = form.querySelector('.form-msg');
+      if (!name || !email || !message) {
+        msg.textContent = 'Please fill in your name, email, and message.';
+        msg.classList.add('show');
+        return;
+      }
+      var body = encodeURIComponent('Name: ' + name + '\nInterested in: ' + service + '\n\n' + message);
+      var subject = encodeURIComponent('Enquiry from ' + name + ' - ' + service);
+      window.location.href = 'mailto:hello@juzly.com?subject=' + subject + '&body=' + body;
+      msg.textContent = 'Opening your email client to send this. If nothing opens, email us directly at hello@juzly.com.';
+      msg.classList.add('show');
+    });
+  }
+})();
+</script>
+
+<script>
+(function(){
+  var container = document.getElementById('hero-3d');
+  if (!container) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var observer = new IntersectionObserver(function(entries){
+    if (entries[0].isIntersecting) {
+      if (typeof THREE === 'undefined') {
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js').then(actuallyInitThreeJS);
+      } else {
+        actuallyInitThreeJS();
+      }
+      observer.disconnect();
+    }
+  }, { threshold: 0.05 });
+  observer.observe(container);
+
+  function loadScript(src) {
+    return new Promise(function(resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+  function actuallyInitThreeJS(){
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+  var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(container.offsetWidth, container.offsetHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  container.appendChild(renderer.domElement);
+
+  // Ambient light to lift wireframe visibility
+  var ambient = new THREE.AmbientLight(0xffffff, 0.4);
+  scene.add(ambient);
+
+  // Point light for depth
+  var pl = new THREE.PointLight(0x00d4ff, 0.6, 10);
+  pl.position.set(2, 2, 3);
+  scene.add(pl);
+
+  // Outer wireframe icosahedron — more prominent
+  var geo1 = new THREE.IcosahedronGeometry(2.0, 0);
+  var edges1 = new THREE.EdgesGeometry(geo1);
+  var mat1 = new THREE.LineBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: 0.38 });
+  var wire1 = new THREE.LineSegments(edges1, mat1);
+  scene.add(wire1);
+
+  // Inner wireframe (violet) — more visible
+  var geo2 = new THREE.IcosahedronGeometry(1.25, 1);
+  var edges2 = new THREE.EdgesGeometry(geo2);
+  var mat2 = new THREE.LineBasicMaterial({ color: 0x7b61ff, transparent: true, opacity: 0.22 });
+  var wire2 = new THREE.LineSegments(edges2, mat2);
+  scene.add(wire2);
+
+  // Core dot — larger, pulsing
+  var dotGeo = new THREE.BufferGeometry();
+  var dotPos = new Float32Array([0,0,0]);
+  dotGeo.setAttribute('position', new THREE.BufferAttribute(dotPos, 3));
+  var dotMat = new THREE.PointsMaterial({ color: 0x00d4ff, size: 0.10, transparent: true, opacity: 0.95 });
+  var dot = new THREE.Points(dotGeo, dotMat);
+  scene.add(dot);
+
+  camera.position.z = 3.6;
+
+  var mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+  document.addEventListener('mousemove', function(e){
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  var time = 0;
+  function animate(){
+    requestAnimationFrame(animate);
+    time += 0.016;
+
+    wire1.rotation.x += 0.0012;
+    wire1.rotation.y += 0.002;
+    wire2.rotation.x -= 0.0008;
+    wire2.rotation.y += 0.0015;
+
+    targetX += (mouseX * 0.4 - targetX) * 0.04;
+    targetY += (mouseY * 0.4 - targetY) * 0.04;
+
+    wire1.rotation.x += targetY * 0.008;
+    wire1.rotation.y += targetX * 0.008;
+    wire2.rotation.x += targetY * 0.005;
+    wire2.rotation.y += targetX * 0.005;
+
+    // Pulse the core dot
+    dotMat.size = 0.10 + Math.sin(time * 2.5) * 0.025;
+    dotMat.opacity = 0.85 + Math.sin(time * 2.5) * 0.15;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', function(){
+    camera.aspect = container.offsetWidth / container.offsetHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+  });
+  }
+})();
+</script>
+</body>
+</html>
